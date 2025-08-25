@@ -1,24 +1,26 @@
 package dev.breno5g.spring_clean.infra.mappers;
 
+import dev.breno5g.spring_clean.core.entities.Event;
 import dev.breno5g.spring_clean.infra.dtos.EventDTO;
-import dev.breno5g.spring_clean.infra.persistance.entities.Event;
 import lombok.experimental.UtilityClass;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @UtilityClass
 public class EventMapper {
     public static Event map(EventDTO eventDTO) {
-        return Event.builder()
-                .identifier(eventDTO.identifier())
-                .name(eventDTO.name())
-                .description(eventDTO.description())
-                .type(eventDTO.type())
-                .capacity(eventDTO.capacity())
-                .location(eventDTO.location())
-                .initialDate(eventDTO.initialDate())
-                .finalDate(eventDTO.finalDate())
-                .organizer(eventDTO.organizer())
-                .build();
+        return new Event(
+                UUID.randomUUID(),
+                eventDTO.identifier(),
+                eventDTO.name(),
+                eventDTO.description(),
+                eventDTO.initialDate(),
+                eventDTO.finalDate(),
+                eventDTO.location(),
+                eventDTO.capacity(),
+                eventDTO.type(),
+                eventDTO.organizer()
+        );
     }
 }
