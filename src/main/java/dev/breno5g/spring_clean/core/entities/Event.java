@@ -7,12 +7,14 @@ import java.util.UUID;
 
 public record Event(
         UUID id,
+        String identifier,
         String name,
         String description,
         LocalDateTime initialDate,
         LocalDateTime finalDate,
         String location,
         Integer capacity,
-        EventType type
+        EventType type,
+        String organizer
 ) {
 }
