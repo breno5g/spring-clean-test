@@ -6,7 +6,6 @@ import dev.breno5g.spring_clean.core.usecases.interfaces.GetEvents;
 import dev.breno5g.spring_clean.infra.dtos.EventDTO;
 import dev.breno5g.spring_clean.infra.mappers.EventMapper;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

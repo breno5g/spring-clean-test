@@ -3,7 +3,6 @@ package dev.breno5g.spring_clean.infra.gateway;
 import dev.breno5g.spring_clean.core.entities.Event;
 import dev.breno5g.spring_clean.core.gateway.EventGateway;
 import dev.breno5g.spring_clean.infra.exceptions.EventExceptions;
-import dev.breno5g.spring_clean.infra.exceptions.EventIdentifierAlreadyExistsException;
 import dev.breno5g.spring_clean.infra.mappers.EventMapper;
 import dev.breno5g.spring_clean.infra.persistance.entities.EventEntity;
 import dev.breno5g.spring_clean.infra.persistance.repositories.EventRepository;
