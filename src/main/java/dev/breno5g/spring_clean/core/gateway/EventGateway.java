@@ -7,4 +7,6 @@ import java.util.List;
 public interface EventGateway {
     Event create(Event event);
     List<Event> getAll();
+    Event findByIdentifier(String identifier);
+    Integer countByIdentifier(String identifier);
 }

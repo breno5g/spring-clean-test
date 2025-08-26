@@ -2,8 +2,10 @@ package dev.breno5g.spring_clean.infra.beans;
 
 import dev.breno5g.spring_clean.core.gateway.EventGateway;
 import dev.breno5g.spring_clean.core.usecases.CreateEventImpl;
+import dev.breno5g.spring_clean.core.usecases.FindEventByIdentifierImpl;
 import dev.breno5g.spring_clean.core.usecases.GetEventsImpl;
 import dev.breno5g.spring_clean.core.usecases.interfaces.CreateEvent;
+import dev.breno5g.spring_clean.core.usecases.interfaces.FindEventByIdentifier;
 import dev.breno5g.spring_clean.core.usecases.interfaces.GetEvents;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,5 +21,10 @@ public class BeanConfiguration {
     @Bean
     public GetEvents getEvents(EventGateway eventGateway) {
         return new GetEventsImpl(eventGateway);
+    }
+
+    @Bean
+    public FindEventByIdentifier findEventByIdentifier(EventGateway eventGateway) {
+        return new FindEventByIdentifierImpl(eventGateway);
     }
 }

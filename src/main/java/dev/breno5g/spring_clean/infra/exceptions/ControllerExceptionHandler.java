@@ -1,5 +1,6 @@
 package dev.breno5g.spring_clean.infra.exceptions;
 
+import dev.breno5g.spring_clean.core.exceptions.EventIdentifierAlreadyExistsException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

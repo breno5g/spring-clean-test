@@ -2,7 +2,6 @@ package dev.breno5g.spring_clean.infra.gateway;
 
 import dev.breno5g.spring_clean.core.entities.Event;
 import dev.breno5g.spring_clean.core.gateway.EventGateway;
-import dev.breno5g.spring_clean.infra.exceptions.EventExceptions;
 import dev.breno5g.spring_clean.infra.mappers.EventMapper;
 import dev.breno5g.spring_clean.infra.persistance.entities.EventEntity;
 import dev.breno5g.spring_clean.infra.persistance.repositories.EventRepository;
@@ -19,7 +18,6 @@ public class EventRepositoryGateway implements EventGateway {
 
     @Override
     public Event create(Event event) {
-        if (this.eventRepository.countByIdentifier(event.identifier()) > 0) throw EventExceptions.EVENT_IDENTIFIER_ALREADY_EXISTS_EXCEPTION;
         EventEntity eventEntity = this.eventRepository.save(EventMapper.map(event));
         return EventMapper.map(eventEntity);
     }
@@ -28,5 +26,16 @@ public class EventRepositoryGateway implements EventGateway {
     public List<Event> getAll() {
         List<EventEntity> eventEntities = this.eventRepository.findAll();
         return eventEntities.stream().map(EventMapper::map).toList();
+    }
+
+    @Override
+    public Event findByIdentifier(String identifier) {
+        EventEntity event = this.eventRepository.findByIdentifier(identifier);
+        return EventMapper.map(event);
+    }
+
+    @Override
+    public Integer countByIdentifier(String identifier) {
+        return this.eventRepository.countByIdentifier(identifier);
     }
 }

@@ -7,4 +7,5 @@ import java.util.UUID;
 
 public interface EventRepository extends JpaRepository<EventEntity, UUID> {
     Integer countByIdentifier(String identifier);
+    EventEntity findByIdentifier(String identifier);
 }
