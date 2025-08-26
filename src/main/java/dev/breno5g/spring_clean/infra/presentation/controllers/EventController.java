@@ -38,9 +38,4 @@ public class EventController {
                 HttpStatus.OK
         );
     }
-
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<String> handleConstraintViolation(ConstraintViolationException ex) {
-        return new ResponseEntity<>("Database constraint violation: " + ex.getSQLException().getMessage(), HttpStatus.BAD_REQUEST);
-    }
 }
