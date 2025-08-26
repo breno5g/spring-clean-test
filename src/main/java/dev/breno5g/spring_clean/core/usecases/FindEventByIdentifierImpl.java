@@ -1,6 +1,7 @@
 package dev.breno5g.spring_clean.core.usecases;
 
 import dev.breno5g.spring_clean.core.entities.Event;
+import dev.breno5g.spring_clean.core.exceptions.EventExceptions;
 import dev.breno5g.spring_clean.core.gateway.EventGateway;
 import dev.breno5g.spring_clean.core.usecases.interfaces.FindEventByIdentifier;
 
@@ -14,6 +15,8 @@ public class FindEventByIdentifierImpl implements FindEventByIdentifier {
 
     @Override
     public Event execute(String identifier) {
-        return this.eventGateway.findByIdentifier(identifier);
+        return this.eventGateway.findByIdentifier(identifier).orElseThrow(
+                () -> EventExceptions.EVENT_NOT_FOUND_EXCEPTION
+        );
     }
 }

@@ -3,9 +3,10 @@ package dev.breno5g.spring_clean.infra.persistance.repositories;
 import dev.breno5g.spring_clean.infra.persistance.entities.EventEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public interface EventRepository extends JpaRepository<EventEntity, UUID> {
     Integer countByIdentifier(String identifier);
-    EventEntity findByIdentifier(String identifier);
+    Optional<EventEntity> findByIdentifier(String identifier);
 }
