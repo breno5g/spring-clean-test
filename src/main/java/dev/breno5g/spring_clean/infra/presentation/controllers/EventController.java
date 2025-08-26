@@ -2,6 +2,7 @@ package dev.breno5g.spring_clean.infra.presentation.controllers;
 
 import dev.breno5g.spring_clean.core.entities.Event;
 import dev.breno5g.spring_clean.core.usecases.interfaces.CreateEvent;
+import dev.breno5g.spring_clean.core.usecases.interfaces.FindEventByIdentifier;
 import dev.breno5g.spring_clean.core.usecases.interfaces.GetEvents;
 import dev.breno5g.spring_clean.infra.dtos.EventDTO;
 import dev.breno5g.spring_clean.infra.mappers.EventMapper;
@@ -19,6 +20,7 @@ public class EventController {
 
     private final CreateEvent createEvent;
     private final GetEvents getEvents;
+    private final FindEventByIdentifier findEventByIdentifier;
 
     @PostMapping("/")
     public ResponseEntity<Event> create(@RequestBody EventDTO eventDTO) {
@@ -36,5 +38,11 @@ public class EventController {
                 events,
                 HttpStatus.OK
         );
+    }
+
+    @GetMapping("/{identifier}")
+    public ResponseEntity<Event> findByIdentifier(@PathVariable String identifier) {
+        Event event = this.findEventByIdentifier.execute(identifier);
+        return ResponseEntity.ok(event);
     }
 }

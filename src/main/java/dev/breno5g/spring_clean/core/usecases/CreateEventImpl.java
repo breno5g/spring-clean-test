@@ -3,6 +3,7 @@ package dev.breno5g.spring_clean.core.usecases;
 import dev.breno5g.spring_clean.core.entities.Event;
 import dev.breno5g.spring_clean.core.gateway.EventGateway;
 import dev.breno5g.spring_clean.core.usecases.interfaces.CreateEvent;
+import dev.breno5g.spring_clean.core.exceptions.EventExceptions;
 
 public class CreateEventImpl implements CreateEvent {
 
@@ -14,6 +15,7 @@ public class CreateEventImpl implements CreateEvent {
 
     @Override
     public Event execute(Event event) {
+        if (this.eventGateway.countByIdentifier(event.identifier()) > 0) throw EventExceptions.EVENT_IDENTIFIER_ALREADY_EXISTS_EXCEPTION;
         return this.eventGateway.create(event);
     }
 }

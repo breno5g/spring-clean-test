@@ -1,4 +1,4 @@
-package dev.breno5g.spring_clean.infra.exceptions;
+package dev.breno5g.spring_clean.core.exceptions;
 
 public interface EventExceptions {
     String EVENT_IDENTIFIER_ALREADY_EXISTS = "Event identifier already exists";
